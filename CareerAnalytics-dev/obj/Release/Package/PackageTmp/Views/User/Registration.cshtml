@@ -1,0 +1,184 @@
+﻿@*This view allows a new user to register*@
+
+@model CareerAnalytics_dev.Models.User
+
+@{
+    /**/
+
+    ViewBag.Title = "Registration";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        html,
+        body {
+            /*min-height:1300px;*/
+            overflow: auto;
+        }
+        .scrollbar {
+            margin-left: 22px;
+            float: left;
+            height: 300px;
+            width: 65px;
+            background: #F5F5F5;
+            overflow-y: scroll;
+            margin-bottom: 25px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: linear-gradient(left, #96A6BF, #63738C);
+            box-shadow: inset 0 0 1px 1px #5C6670;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background: #eee;
+            box-shadow: 0 0 1px 1px #bbb, inset 0 0 7px rgba(0,0,0,0.3)
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(left, #8391A6, #536175);
+        }
+
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            background-color: #F5F5F5;
+        }
+
+       
+    </style>
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+    <title>Account Registration</title>
+</head>
+    <body id="Registration-body">
+        <div class="registration-page">
+            <div id="box-register" style="overflow:auto">
+                <div id="signup">
+                    <h2 style="color:white;margin-top: -11px;">Registration</h2>
+                    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+            {
+                if (ViewBag.Message != null)
+                {
+
+
+                    <div class="alert alert-success">
+                        <strong>Success!</strong>@ViewBag.Message
+                    </div>
+
+        }
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <table cellpadding="4" cellspacing="20">
+                    <tr>
+
+                        <td>
+                            @*@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { placeholder = "First Name" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            @*@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { placeholder = "Last Name" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            @*@Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { placeholder = "Email" } })
+                            @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                            @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            @*@Html.EditorFor(model => model.ConfirmEmail, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.ConfirmEmail, new { htmlAttributes = new { placeholder = "Confirm Email" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmEmail, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            @*@Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { placeholder = "Date of Birth" } })
+                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @*@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { placeholder = "Confirm Password" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @*@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.UTID, new { htmlAttributes = new { placeholder = "Enter 2" } })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @*@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.EditorFor(model => model.CID, new { htmlAttributes = new { placeholder = "Enter 1" } })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+}
+}
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+}

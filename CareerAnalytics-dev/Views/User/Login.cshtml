@@ -1,0 +1,144 @@
+﻿@*This view pulls up the login page which requires a valid email and password as well as a CAPTCHA confirmation*@
+
+@model CareerAnalytics_dev.Models.UserLogin
+
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+<div id="wrapper">
+    <html>
+
+    <head>
+        <meta name="google-signin-client_id" content="677585100847-25pk5ljl9l1k714q2hkrrj7dg9tlt0jb.apps.googleusercontent.com">
+        <style type="text/css">
+            body {
+                overflow: hidden;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+        <title>Login</title>
+    </head>
+    <body id="Login-body">
+        <div class="crossfade">
+            <figure></figure>
+            <figure></figure>
+            <figure></figure>
+            <figure></figure>
+            <figure></figure>
+            <figure></figure>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div id="box">
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div id="login">
+                        <h2 style="color:white; margin-top:-22px; margin-bottom:0px;" class="white">Culverhouse Career Analytics</h2>
+                        <div class="form-horizontal">
+                            <hr style="color:white" id="hrLogin" />
+                            <div class="imagecontainer">
+                                <img src="~/Content/UA-StackedNameplate.png" alt="Logo">
+                            </div>
+                            <div class="imagecontainer1">
+                                <img src="~/Content/AlabamaCrest.png" alt="Logo">
+                            </div>
+                            <table id="login-info" cellpadding="4" cellspacing="20">
+
+                                <tr>
+                                    @if (ViewBag.Message != "")
+                                    {
+                                        <td>
+                                            <div class="text-danger">@ViewBag.Message</div>
+                                        </td>
+                                    }
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { placeholder = "Enter Email" } })
+                                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "" })
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Enter Password" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "" })
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                        <td id="remember-me-check">
+                                                @Html.EditorFor(model => model.RememberMe)
+                                                @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "" })
+
+                                        </td>
+                                    </tr>*@
+                                <tr>
+
+                                    <td>
+                                        <button class="button" style="vertical-align:middle"><span>Login </span></button>
+                                        @*<input type="submit" value="Login" class="btn btn-default" id="btnLogin" /><span></span>*@
+                                        <div class="g-signin2" data-onsuccess="onSignIn">@Html.ActionLink("Sign In", "Index", "User")</div>
+                                        <a href="#" onclick="signOut();">Sign out</a>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td id="remember-forgot">
+                                        @Html.ActionLink("Register Now", "Registration", "User")          @Html.ActionLink("Forgot Password?", "ForgotPassword", "User")
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        @*form specific fields*@
+                                        <div class="editor-label">
+                                            @Html.LabelFor(model => model.Captcha)
+                                            <a href="@Url.Action("Login")">
+                                                <img alt="Captcha" src="@Url.Action("CaptchaImage")" style="" />
+
+
+                                            </a>
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.EditorFor(model => model.Captcha)
+                                            @Html.ValidationMessageFor(model => model.Captcha)
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    </body>
+</html>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+}

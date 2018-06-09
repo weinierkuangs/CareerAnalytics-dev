@@ -1,0 +1,125 @@
+﻿@model IEnumerable<CareerAnalytics_dev.Models.User>
+@*This view is made for admin users only. Other users will not be able to see the same thing.*@
+@{
+	ViewBag.Title = "AdminDashboard";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<body style="background-color:darkgrey;">
+	<div id="box-admindashboard" style="overflow-y:auto;height:500px; overflow-x:auto;">
+		<h2>AdminDashboard</h2>
+
+		<p>
+			@Html.ActionLink("Create New", "Create")
+		</p>
+		<table class="adminTable">
+			<thead>
+				<tr>
+					<th>
+						@*@Html.DisplayNameFor(model => model.FirstName)*@
+						First Name
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.LastName)*@
+						Last Name
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.EmailID)*@
+						Email
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.DateOfBirth)*@
+						Date of Birth
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.Password)*@
+						Password
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.AcademicStatus)*@
+						Academic Status
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.EmploymentStatus)*@
+						Employment Status
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.JobTitle)*@
+						Job Title
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.JobIndustry)*@
+						Job Industry
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.Institution)*@
+						Institution
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.AnticipatedGraduationDate)*@
+						Anticipated Graduation Date
+					</th>
+					<th>
+						@*@Html.DisplayNameFor(model => model.Major)*@
+						Major
+					</th>
+					<th>
+						Action
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.FirstName)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.LastName)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.EmailID)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.DateOfBirth)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Password)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.AcademicStatus)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.EmploymentStatus)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.JobTitle)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.JobIndustry)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Institution)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.AnticipatedGraduationDate)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Major)
+						</td>
+						<td>
+							@Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+							@Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+							@Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+						</td>
+					</tr>
+				}
+			</tbody>
+
+		</table>
+
+	</div>
+</body>

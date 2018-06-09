@@ -1,0 +1,111 @@
+﻿@*This view allows the user to view their personal information*@
+
+@model CareerAnalytics_dev.Models.ProfileModel
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+</head>
+<body id="UserProfile" style="background-image:url(../../Content/background-campus.jpg)">>
+		<div id="box-profile">
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+
+				<div class="form-horizontal">
+					<h4>Profile</h4>
+					<hr style="background-color: #b94a48;"/>
+					@Html.ValidationSummary(true)
+					@Html.HiddenFor(model => model.UserID)
+					<div class="form-group">
+						@Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.FirstName)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.LastName)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.DateOfBirth)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.AcademicStatus, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.AcademicStatus)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.EmploymentStatus, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.EmploymentStatus)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.JobTitle, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.JobTitle)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.JobIndustry, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.JobIndustry)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Institution, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.Institution)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.AnticipatedGraduationDate, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.AnticipatedGraduationDate)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Major, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DisplayFor(model => model.Major)
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							@Html.ActionLink("Update", "ProfileEdit", "User", new { emailid = @HttpContext.Current.User.Identity.Name }, null)
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+</body>
+</html>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+}

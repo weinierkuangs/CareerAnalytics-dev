@@ -1,0 +1,26 @@
+﻿@*This view is for all users that arent admins. It contains visuals pulled from the users information*@
+@{
+	/**/
+
+	ViewBag.Title = "Dashboard";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body  style="background-image:url(../../Content/background-campus.jpg)">
+    <div class="dashboard">
+        <div id="box-dashboard">
+            <h2>Dashboard</h2>
+            
+
+
+
+            @if (Request.IsAuthenticated)
+    {
+        <iframe width="1200" height="800" class="powerbi-dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiYmE4MWU4OGYtOTliYi00ODkwLWFhZmUtZjQwZDViZmI2ZGU2IiwidCI6IjJhMDA3MjhlLWYwZDAtNDBiNC1hNGU4LWNlNDMzZjNmYmNhNyIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+}
+else
+{
+        <p>Please Log in First</p>
+}
+        </div>
+    </div>
+</body>

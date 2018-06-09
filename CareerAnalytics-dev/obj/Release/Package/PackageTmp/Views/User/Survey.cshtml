@@ -1,0 +1,27 @@
+﻿@*This view has the survey from qualtrics embedded in the web application so that the user does
+    not have to leave the application to take it*@
+@{
+    ViewBag.Title = "Survey";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    html, body {
+        overflow-y: hidden;
+        height: 100%;
+    }
+</style>
+<body style="background-image:url(../../Content/UA1.jpg)">
+    <div class="dashboard">
+        <div id="box-dashboard">
+            <h2>Survey</h2>
+            @if (Request.IsAuthenticated)
+            {
+                <iframe id="survey" src="https://universityofalabama.az1.qualtrics.com/jfe/form/SV_4NlU66kAeCsxEHz" height="80%" width="100%"></iframe>
+            }
+            else
+            {
+                <p>Please Log in First</p>
+            }
+        </div>
+    </div>
+</body>

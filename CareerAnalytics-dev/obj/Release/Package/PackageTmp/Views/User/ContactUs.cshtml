@@ -1,0 +1,69 @@
+﻿@model CareerAnalytics_dev.Models.User
+@*This view allows users to send a message to the admin and it will send an email to the user for their records as well*@
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #body {
+        min-height: 400px;
+        margin-bottom: 800px;
+        clear: both;
+        overflow: auto;
+        min-width: 1200px;
+    }
+    .dotted {
+        margin-top: -6px;
+        border: 1px dotted #ff0000;
+        border-style: none none dotted;
+        color: #fff;
+        background-color: #fff;
+        width:90%;
+    }
+</style>
+<div id="wrapper">
+    <body style="background:url(../../Content/UA3.jpg); overflow:auto;">
+
+        <div id="contact-header">
+            <div id="contacth2">
+                <h2 id="contact-heading" style="color:white;">Contact Us</h2>
+                <hr class="dotted" />
+            </div>
+            <h3 id="contact-subheading">We'd <i class="fa fa-heart"></i> to help!</h3>
+        </div>
+
+        <div id="box-contact">
+
+            @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @ViewBag.Message
+                @*Your Email Address:*@
+                <div id="emailcontact" style=" color:white;">
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { placeholder = "Email" } })
+                    @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                    @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                </div>
+                @*To:*@
+                @*<div>
+                    <input type="text" name="adminEmail" value="careeranalytics2018@gmail.com" readonly>
+                </div>*@
+                <div id="message-box">
+                    @Html.TextAreaFor(model => model.Message, new { placeholder = "Message"})
+                </div>
+
+
+                <div class="form-group">
+                    <div id="email-btn" class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Send" />
+                    </div>
+                </div>
+            </div>
+    }
+        </div>
+
+    </body>
+    </div>

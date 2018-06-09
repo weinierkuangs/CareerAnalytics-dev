@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+@using CareerAnalytics_dev.Utilities
+@*This is the template used for the whole website. This contains the navigation bar and other tools used 
+    on all pages*@
+<html>
+<head>
+    <style>
+       
+    </style>
+    @*<style>
+        input[type=text] {
+            width: 100px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+            /* When the input field gets focus, change its width to 100% */
+            input[type=text]:focus {
+                width: 80%;
+            }
+    </style>*@
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Career Analytics</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="~/Scripts/sidemenubar.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+
+	<header class="static-header">
+        <div class="mainHeader">
+            @if (Request.IsAuthenticated)
+    {
+        <h1>
+            <a href="~/Home">
+                <img class="header-logo" src="~/Content/nameplate-white-ps_360.png" />
+            </a>
+        </h1>
+}
+else 
+{
+        <h1>
+            <a href="~/User/Login">
+                <img class="header-logo" src="~/Content/nameplate-white-ps_360.png" />
+            </a>
+        </h1>
+}
+        </div>
+        <ul>
+            @if (Request.IsAuthenticated)
+    {
+        if (@HttpContext.Current.User.Identity.Name == "admin")
+        {
+            <li class='@Html.IsActive("User","AdminDashboard")'>@Html.ActionLink("Admin Home", "AdminDashboard", "User") </li>
+            <li class='@Html.IsActive("User","SurveyInfo")'>@Html.ActionLink("Survey Info", "SurveyInfo", "User")</li>
+}
+else
+{
+
+
+        <li class='@Html.IsActive("Home","Index")'><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Home</a></li>
+        @*<li class='@Html.IsActive("Home","Index")'> @Html.ActionLink("Home", "Index", "Home") </li>*@
+
+        <li class='@Html.IsActive("User","UserProfile")'><a href="@Url.Action("UserProfile", "User",new { emailid = @HttpContext.Current.User.Identity.Name }, null)"><i class="fa fa-address-card"></i> Profile</a></li>
+        @*<li class='@Html.IsActive("User","UserProfile")'>@Html.ActionLink("Profile", "UserProfile", "User", new { emailid = @HttpContext.Current.User.Identity.Name }, null)</li>*@
+
+        <li class='@Html.IsActive("User","Dashboard")'><a href="@Url.Action("Dashboard", "User")"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
+        @*<li class='@Html.IsActive("User","Dashboard")'>@Html.ActionLink("Dashboard", "Dashboard", "User")</li>*@
+
+        <li class='@Html.IsActive("User","Reports")'><a href="@Url.Action("Reports", "User",new { emailid = @HttpContext.Current.User.Identity.Name }, null)"><i class="glyphicon glyphicon-file"></i> Reports</a></li>
+        @*<li class='@Html.IsActive("User","Reports")'>@Html.ActionLink("Reports", "Reports", "User")</li>*@
+
+        <li class='@Html.IsActive("User","Survey")'><a href="@Url.Action("Survey", "User")"><i class="glyphicon glyphicon-edit"></i> Survey</a></li>
+        @*<li class='@Html.IsActive("User","Survey")'>@Html.ActionLink("Take Survey", "Survey", "User")</li>*@
+
+        <li class='@Html.IsActive("User","ContactUs")'><a href="@Url.Action("ContactUs", "User")"><i class="fa fa-comments"></i> Contact Us</a></li>
+        @*<li class='@Html.IsActive("User","ContactUs")'>@Html.ActionLink("Contact Us", "ContactUs", "User")</li>*@
+        <li>
+            <form method="get" action="http://www.google.com/search">
+                <div>
+                    <table border="0" cellpadding="0">
+                        <tr>
+                            <td id="google-search-bar">
+                                <input id="google-search" type="text" name="q" size="25" maxlength="255" value="" placeholder="Search Google.." />
+                                <button  id="googlesearch-button" type="submit"> <i class="fa fa-google"></i> </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="font-size: 75%"></td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </li>
+}
+        <li style="float:right">
+            @using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Logout</a>
+}
+        </li>
+}
+else
+{
+        <li><a href="~/User/Login"><i class="fa fa-sign-in"></i> Login</a></li>
+        <li><a href="~/User/Registration"><i class="glyphicon glyphicon-edit"></i> Registration</a></li>
+}
+        </ul>
+	</header>
+	@*<div class="main-menu">
+
+			<span class="sidenav-toggler" onclick="openNav()">&#9776;</span>
+
+			<a class="site-title" href="~/User/Login">Survey Site</a>
+		</div>*@
+
+
+
+	@*<div id="mySidenav" class="sidenav" style="width:200px;">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<div>
+				<img class="logo" src="https://www.ua.edu/assets/img/ua-square-logo.png" alt="UA Logo">
+			</div>
+			<ul class="nav navbar-nav">
+				<li>@Html.ActionLink("Home", "Index", "Home")</li>
+				@if (Request.IsAuthenticated)
+			{
+				<li>@Html.ActionLink("Dashboard", "Dashboard", "User")</li>
+		}
+				<li>@Html.ActionLink("Account Sign Up", "Registration", "User")</li>
+				<li>@Html.ActionLink("Login", "Login", "User")</li>
+			</ul>
+		</div>*@
+	<div class="container body-content">
+
+		@RenderBody()
+	</div>
+	<div id="footer">
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - UA Management</p>
+		</footer>
+	</div>
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "200px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("Scripts", required: false)
+
+</body>
+</html>

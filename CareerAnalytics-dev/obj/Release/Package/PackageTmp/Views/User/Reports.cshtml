@@ -1,0 +1,113 @@
+﻿@*This view allows the user to see a report based on the given information from the survey*@
+
+@model CareerAnalytics_dev.Models.ReportModel
+@{
+    /**/
+
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #box-reports {
+        overflow:auto;
+        padding-top: 27px;
+        position: absolute;
+        top: 51%;
+        left: 50%;
+        height: 53%;
+        transform: translate(-50%,-50%);
+        width: 59%;
+        padding: 40px;
+        background-color: #f5f5f5;
+        border-top: 5px solid #900f0f;
+        box-sizing: border-box;
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.5);
+        border-radius: 10px;
+    }
+</style>
+<body style="background:url(../../Content/UA1.jpg);">
+    <div class="report">
+        <div id="box-reports">
+            <h2>Reports</h2>
+            @if (Request.IsAuthenticated)
+        {
+            <div class="part-1-academic">
+                @Html.LabelFor(model => model.FirstName)
+                @Html.DisplayFor(model => model.FirstName)<br />
+                @Html.LabelFor(model => model.LastName)
+                @Html.DisplayFor(model => model.LastName)<br />
+                @Html.LabelFor(model => model.UndergraduateGPA)
+                @Html.DisplayFor(model => model.UndergraduateGPA)<br />
+                @Html.LabelFor(model => model.FirstUndergraduateMajor)
+                @Html.DisplayFor(model => model.FirstUndergraduateMajor)<br />
+                @Html.LabelFor(model => model.SecondUndergraduateMajor)
+                @Html.DisplayFor(model => model.SecondUndergraduateMajor)<br />
+                @Html.LabelFor(model => model.GraduateGPA)
+                @Html.DisplayFor(model => model.GraduateGPA)<br />
+                @Html.LabelFor(model => model.FirstGraduateMajor)
+                @Html.DisplayFor(model => model.FirstGraduateMajor)<br />
+                @Html.LabelFor(model => model.SecondGraduateMajor)
+                @Html.DisplayFor(model => model.SecondGraduateMajor)<br />
+            </div>
+            <div class="part-2-skillsets">
+                @Html.LabelFor(model => model.ManagementSkillLevel)
+                @Html.DisplayFor(model => model.ManagementSkillLevel)<br />
+                @Html.LabelFor(model => model.EntrepreneurshipLevel)
+                @Html.DisplayFor(model => model.EntrepreneurshipLevel)<br />
+                @Html.LabelFor(model => model.MarketingLevel)
+                @Html.DisplayFor(model => model.MarketingLevel)<br />
+                @Html.LabelFor(model => model.TechnicalLevel)
+                @Html.DisplayFor(model => model.TechnicalLevel)<br />
+            </div>
+            <div class="part-3-performance">
+                @Html.LabelFor(model => model.Top3MajorsWithHighAcademicPerformers)
+                @Html.DisplayFor(model => model.Top3MajorsWithHighAcademicPerformers1),
+                @Html.DisplayFor(model => model.Top3MajorsWithHighAcademicPerformers2),
+                @Html.DisplayFor(model => model.Top3MajorsWithHighAcademicPerformers3)<br />
+                @Html.LabelFor(model => model.Top3MajorsWithHighCareerPerformers)
+                @Html.DisplayFor(model => model.Top3MajorsWithHighCareerPerformers1),
+                @Html.DisplayFor(model => model.Top3MajorsWithHighCareerPerformers2),
+                @Html.DisplayFor(model => model.Top3MajorsWithHighCareerPerformers3)<br />
+                @Html.LabelFor(model => model.Top3MajorsWithLowAcademicPerformers)
+                @Html.DisplayFor(model => model.Top3MajorsWithLowAcademicPerformers1),
+                @Html.DisplayFor(model => model.Top3MajorsWithLowAcademicPerformers2),
+                @Html.DisplayFor(model => model.Top3MajorsWithLowAcademicPerformers3)<br />
+                @Html.LabelFor(model => model.Top3MajorsWithLowCareerPerformers)
+                @Html.DisplayFor(model => model.Top3MajorsWithLowCareerPerformers1),
+                @Html.DisplayFor(model => model.Top3MajorsWithLowCareerPerformers2),
+                @Html.DisplayFor(model => model.Top3MajorsWithLowCareerPerformers3)<br />
+            </div>
+            <div class="part-4-satisfaction">
+                @Html.LabelFor(model => model.Top3MostEnjoyableMajors)
+                @Html.DisplayFor(model => model.Top3MostEnjoyableMajors1)
+                @Html.DisplayFor(model => model.Top3MostEnjoyableMajors2)
+                @Html.DisplayFor(model => model.Top3MostEnjoyableMajors3)<br />
+                @Html.LabelFor(model => model.Top3MajorsWithMostSatisfiedEmployees)
+                @Html.DisplayFor(model => model.Top3MajorsWithMostSatisfiedEmployees1)
+                @Html.DisplayFor(model => model.Top3MajorsWithMostSatisfiedEmployees2)
+                @Html.DisplayFor(model => model.Top3MajorsWithMostSatisfiedEmployees3)<br />
+                @Html.LabelFor(model => model.Top3MostHatedMajors)
+                @Html.DisplayFor(model => model.Top3MostHatedMajors1)
+                @Html.DisplayFor(model => model.Top3MostHatedMajors2)
+                @Html.DisplayFor(model => model.Top3MostHatedMajors3)<br />
+                @Html.LabelFor(model => model.Top3MajorsWithMostUnsatisfiedEmployees)
+                @Html.DisplayFor(model => model.Top3MajorsWithMostUnsatisfiedEmployees1)
+                @Html.DisplayFor(model => model.Top3MajorsWithMostUnsatisfiedEmployees2)
+                @Html.DisplayFor(model => model.Top3MajorsWithMostUnsatisfiedEmployees3)<br />
+
+            </div>
+            <div class="part-5-recommendation">
+                @Html.LabelFor(model => model.Top3RecommendedMajors)
+                @Html.DisplayFor(model => model.Top3RecommendedMajors1)
+                @Html.DisplayFor(model => model.Top3RecommendedMajors2)
+                @Html.DisplayFor(model => model.Top3RecommendedMajors3)
+            </div>
+    }
+    else
+    {
+        <p>Please Log in First</p>
+}
+        </div>
+    </div>
+</body>

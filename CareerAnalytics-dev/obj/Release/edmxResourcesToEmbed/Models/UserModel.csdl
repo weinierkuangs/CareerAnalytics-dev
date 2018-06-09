@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="uamanagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="uamanagementEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="uamanagementModel.User" />
+    <EntitySet Name="UserTypes" EntityType="uamanagementModel.UserType" />
+    <AssociationSet Name="FK__Users__UTID__7C4F7684" Association="uamanagementModel.FK__Users__UTID__7C4F7684">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CID" Type="Int32" />
+    <Property Name="UTID" Type="Int32" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailID" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+    <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ExistingPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AcademicStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmploymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="JobIndustry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Institution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AnticipatedGraduationDate" Type="DateTime" Precision="3" />
+    <Property Name="Major" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserType" Relationship="uamanagementModel.FK__Users__UTID__7C4F7684" FromRole="User" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UTID" />
+    </Key>
+    <Property Name="UTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UTName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="uamanagementModel.FK__Users__UTID__7C4F7684" FromRole="UserType" ToRole="User" />
+  </EntityType>
+  <Association Name="FK__Users__UTID__7C4F7684">
+    <End Type="uamanagementModel.UserType" Role="UserType" Multiplicity="0..1" />
+    <End Type="uamanagementModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="UTID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

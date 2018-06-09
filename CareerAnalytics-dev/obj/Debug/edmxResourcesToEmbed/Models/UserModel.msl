@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="uamanagementModelStoreContainer" CdmEntityContainer="uamanagementEntities1">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="uamanagementModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Major" ColumnName="Major" />
+          <ScalarProperty Name="AnticipatedGraduationDate" ColumnName="AnticipatedGraduationDate" />
+          <ScalarProperty Name="Institution" ColumnName="Institution" />
+          <ScalarProperty Name="JobIndustry" ColumnName="JobIndustry" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="EmploymentStatus" ColumnName="EmploymentStatus" />
+          <ScalarProperty Name="AcademicStatus" ColumnName="AcademicStatus" />
+          <ScalarProperty Name="ExistingPassword" ColumnName="ExistingPassword" />
+          <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UTID" ColumnName="UTID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="uamanagementModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="UTName" ColumnName="UTName" />
+          <ScalarProperty Name="UTID" ColumnName="UTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

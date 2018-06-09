@@ -1,0 +1,162 @@
+﻿@model CareerAnalytics_dev.Models.User
+@*This view is for the users information*@
+@{
+    ViewBag.Title = "ProfileDetails";
+}
+
+    <h2>ProfileDetails</h2>
+
+    <div>
+        <h4>User</h4>
+        <hr style="color:#333" />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmailID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsEmailVerified)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsEmailVerified)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ActivationCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ActivationCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ResetPasswordCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ResetPasswordCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExistingPassword)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExistingPassword)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicStatus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AcademicStatus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmploymentStatus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmploymentStatus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.JobTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.JobIndustry)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.JobIndustry)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Institution)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Institution)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AnticipatedGraduationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AnticipatedGraduationDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Major)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Major)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ConfirmPassword)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ConfirmPassword)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ConfirmEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ConfirmEmail)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

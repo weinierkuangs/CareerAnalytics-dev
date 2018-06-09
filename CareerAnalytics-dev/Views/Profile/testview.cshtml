@@ -1,0 +1,136 @@
+﻿@model IEnumerable<CareerAnalytics_dev.Models.User>
+@*This view was for testing purposes and has no use*@
+
+@{
+    ViewBag.Title = "testview";
+}
+
+<h2>testview</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsEmailVerified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivationCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResetPasswordCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExistingPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobIndustry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Institution)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnticipatedGraduationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Major)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfirmPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfirmEmail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsEmailVerified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivationCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResetPasswordCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExistingPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AcademicStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmploymentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobIndustry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Institution)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnticipatedGraduationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Major)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfirmPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfirmEmail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>
